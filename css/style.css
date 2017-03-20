@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: black;
+    min-height: 100%;
+    font-family: "Arial", sans-serif;
+}
+
+.game {
+    transform-style: preserve-3d;
+    perspective: 500px;
+    height: 500px;
+    margin: auto;
+    width: 50%;
+}
+
+@-webkit-keyframes matchAnim {
+    0% {
+        background: #bcffcc;
+    }
+    100% {
+        background: white;
+    }
+}
+
+@keyframes matchAnim {
+    0% {
+        background: #bcffcc;
+    }
+    100% {
+        background: white;
+    }
+}
+
+.card {
+    float: left;
+    width: 25%;
+    height: 25%;
+    padding: 5px;
+    text-align: center;
+    display: block;
+    -webkit-perspective: 500px;
+    perspective: 500px;
+    cursor: pointer;
+    z-index: 50;
+}
+
+.card .inside {
+    width: 100%;
+    height: 100%;
+    display: block;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: .4s ease-in-out;
+    transition: .4s ease-in-out;
+    background: white;
+}
+
+.card .inside.picked,
+.card .inside.matched {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.card .inside.matched {
+    -webkit-animation: 1s matchAnim ease-in-out;
+    animation: 1s matchAnim ease-in-out;
+    -webkit-animation-delay: .4s;
+    animation-delay: .4s;
+}
+
+.card .front,
+.card .back {
+    border: 1px solid black;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card .front img,
+.card .back img {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    max-height: 100%;
+}
+
+.card .front {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+@media (max-width: 800px) {
+    .card {
+        height: 14%
+    }
+}
+
+footer {
+    width: 100%;
+    z-index: 0;
+}
+
+footer button {
+    display: block;
+    margin: auto;
+}
